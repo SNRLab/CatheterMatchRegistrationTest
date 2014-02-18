@@ -29,21 +29,72 @@ needleDetectionOutputMovingTransform.SetName("NeedleDetectionOutputMovingTransfo
 slicer.mrmlScene.AddNode(needleDetectionOutputMovingTransform)
 
 # Parameters
-needleDetectionParameters = {}
-needleDetectionParameters["sigma1"] = 1
-needleDetectionParameters["positivecontrast"] = False
-needleDetectionParameters["minsigma"] = 3
-needleDetectionParameters["maxsigma"] = 3
-needleDetectionParameters["stepsigma"] = 1
-needleDetectionParameters["minlinemeasure"] = 150
-needleDetectionParameters["alpha1"] = 0.5
-needleDetectionParameters["alpha2"] = 2.0
-needleDetectionParameters["anglethreshold"] = 35
-needleDetectionParameters["normal"] = 0.0,0.0,1.0
-needleDetectionParameters["numberOfBins"] = 128
-needleDetectionParameters["minimumObjectSize"] = 500
-needleDetectionParameters["minPrincipalAxisLength"] = 180.0
-needleDetectionParameters["closestPoint"] = 0.0,0.0,0.0  
+### Parameter for needle confirmation
+#fixedNeedleDetectionParameters = {}
+#fixedNeedleDetectionParameters["sigma1"] = 1
+#fixedNeedleDetectionParameters["positivecontrast"] = False
+#fixedNeedleDetectionParameters["minsigma"] = 3
+#fixedNeedleDetectionParameters["maxsigma"] = 3
+#fixedNeedleDetectionParameters["stepsigma"] = 1
+#fixedNeedleDetectionParameters["minlinemeasure"] = 150
+#fixedNeedleDetectionParameters["alpha1"] = 0.5
+#fixedNeedleDetectionParameters["alpha2"] = 2.0
+#fixedNeedleDetectionParameters["anglethreshold"] = 35
+#fixedNeedleDetectionParameters["normal"] = 0.0,0.0,1.0
+#fixedNeedleDetectionParameters["numberOfBins"] = 128
+#fixedNeedleDetectionParameters["minimumObjectSize"] = 500
+#fixedNeedleDetectionParameters["minPrincipalAxisLength"] = 180.0
+#fixedNeedleDetectionParameters["closestPoint"] = 0.0,0.0,0.0  
+
+fixedNeedleDetectionParameters = {}
+fixedNeedleDetectionParameters["sigma1"] = 0.5
+fixedNeedleDetectionParameters["positivecontrast"] = False
+fixedNeedleDetectionParameters["minsigma"] = 1
+fixedNeedleDetectionParameters["maxsigma"] = 1
+fixedNeedleDetectionParameters["stepsigma"] = 1
+fixedNeedleDetectionParameters["minlinemeasure"] = 150
+fixedNeedleDetectionParameters["alpha1"] = 0.5
+fixedNeedleDetectionParameters["alpha2"] = 2.0
+fixedNeedleDetectionParameters["anglethreshold"] = 35
+fixedNeedleDetectionParameters["normal"] = 0.0,0.0,1.0
+fixedNeedleDetectionParameters["numberOfBins"] = 128
+fixedNeedleDetectionParameters["minimumObjectSize"] = 50
+fixedNeedleDetectionParameters["minPrincipalAxisLength"] = 100.0
+fixedNeedleDetectionParameters["closestPoint"] = 0.0,0.0,0.0  
+
+
+## Parameter for T2 Prostate
+movingNeedleDetectionParameters = {}
+movingNeedleDetectionParameters["sigma1"] = 0.5
+movingNeedleDetectionParameters["positivecontrast"] = False
+movingNeedleDetectionParameters["minsigma"] = 1
+movingNeedleDetectionParameters["maxsigma"] = 1
+movingNeedleDetectionParameters["stepsigma"] = 1
+movingNeedleDetectionParameters["minlinemeasure"] = 150
+movingNeedleDetectionParameters["alpha1"] = 0.5
+movingNeedleDetectionParameters["alpha2"] = 2.0
+movingNeedleDetectionParameters["anglethreshold"] = 35
+movingNeedleDetectionParameters["normal"] = 0.0,0.0,1.0
+movingNeedleDetectionParameters["numberOfBins"] = 128
+movingNeedleDetectionParameters["minimumObjectSize"] = 500
+movingNeedleDetectionParameters["minPrincipalAxisLength"] = 180.0
+movingNeedleDetectionParameters["closestPoint"] = 0.0,0.0,0.0  
+
+#movingNeedleDetectionParameters = {}
+#movingNeedleDetectionParameters["sigma1"] = 1
+#movingNeedleDetectionParameters["positivecontrast"] = False
+#movingNeedleDetectionParameters["minsigma"] = 3
+#movingNeedleDetectionParameters["maxsigma"] = 3
+#movingNeedleDetectionParameters["stepsigma"] = 1
+#movingNeedleDetectionParameters["minlinemeasure"] = 150
+#movingNeedleDetectionParameters["alpha1"] = 0.5
+#movingNeedleDetectionParameters["alpha2"] = 2.0
+#movingNeedleDetectionParameters["anglethreshold"] = 35
+#movingNeedleDetectionParameters["normal"] = 0.0,0.0,1.0
+#movingNeedleDetectionParameters["numberOfBins"] = 128
+#movingNeedleDetectionParameters["minimumObjectSize"] = 500
+#movingNeedleDetectionParameters["minPrincipalAxisLength"] = 180.0
+#movingNeedleDetectionParameters["closestPoint"] = 0.0,0.0,0.0  
 
 #
 # Cylinder Mask Generator
@@ -62,8 +113,8 @@ movingProstateMask.SetName("MovingProstateMask")
 slicer.mrmlScene.AddNode(movingProstateMask)
 
 # Parameters
-cylinderRadius = 35
-cylinderLength = 40
+cylinderRadius = 30
+cylinderLength = 100
 cylinderOffset = 10
 
 modelToLabelMapParameters = {}
@@ -75,23 +126,38 @@ modelToLabelMapParameters["labelValue"] = 255
 #
 
 # Output volume
-catheterRegistrationOutputVolume = slicer.mrmlScene.CreateNodeByClass("vtkMRMLScalarVolumeNode")
-catheterRegistrationOutputVolume.SetName("CatheterMatchRegistrationOutputVolume")
-slicer.mrmlScene.AddNode(catheterRegistrationOutputVolume)
+#catheterRegistrationOutputVolume = slicer.mrmlScene.CreateNodeByClass("vtkMRMLScalarVolumeNode")
+#catheterRegistrationOutputVolume.SetName("CatheterMatchRegistrationOutputVolume")
+#slicer.mrmlScene.AddNode(catheterRegistrationOutputVolume)
 
 # Parameters
+#catheterRegistrationParameters = {}
+#catheterRegistrationParameters["FixedImageSmoothingFactor"] = 0
+#catheterRegistrationParameters["MovingImageSmoothingFactor"] = 0
+#catheterRegistrationParameters["TestingMode"] = False
+#catheterRegistrationParameters["HistogramBins"] = 30
+#catheterRegistrationParameters["SpatialSamples"] = 10000
+#catheterRegistrationParameters["Iterations"] = 1000,1000,500,200
+#catheterRegistrationParameters["LearningRate"] = 0.01,0.005,0.0005,0.0002
+#catheterRegistrationParameters["TranslationScale"] = 100.0
+#catheterRegistrationParameters["TestOffset"] = 0.0
+#catheterRegistrationParameters["TestAngleOffset"] = 0.0
+#catheterRegistrationParameters["ResampledImageFileName"] = catheterRegistrationOutputVolume.GetID()
+
+## Registration of T2 vs needle confirmation
 catheterRegistrationParameters = {}
 catheterRegistrationParameters["FixedImageSmoothingFactor"] = 0
 catheterRegistrationParameters["MovingImageSmoothingFactor"] = 0
 catheterRegistrationParameters["TestingMode"] = False
-catheterRegistrationParameters["HistogramBins"] = 50
+catheterRegistrationParameters["HistogramBins"] = 100
 catheterRegistrationParameters["SpatialSamples"] = 10000
-catheterRegistrationParameters["Iterations"] = 1000,1000,500,200
-catheterRegistrationParameters["LearningRate"] = 0.01,0.005,0.0005,0.0002
+catheterRegistrationParameters["Iterations"] = 5000
+#catheterRegistrationParameters["LearningRate"] = 0.01,0.0001
+catheterRegistrationParameters["StepLength"] = 0.01,0.0001
 catheterRegistrationParameters["TranslationScale"] = 100.0
 catheterRegistrationParameters["TestOffset"] = 0.0
 catheterRegistrationParameters["TestAngleOffset"] = 0.0
-catheterRegistrationParameters["ResampledImageFileName"] = catheterRegistrationOutputVolume.GetID()
+#catheterRegistrationParameters["ResampledImageFileName"] = catheterRegistrationOutputVolume.GetID()
 
 #
 # CatheterMatchRegistrationTest
@@ -259,7 +325,46 @@ class CatheterMatchRegistrationTestWidget:
     """Generic reload method for any scripted module.
     ModuleWizard will subsitute correct default moduleName.
     """
-    globals()[moduleName] = slicer.util.reloadScriptedModule(moduleName)
+    import imp, sys, os, slicer
+
+    widgetName = moduleName + "Widget"
+
+    # reload the source code
+    # - set source file path
+    # - load the module to the global space
+    filePath = eval('slicer.modules.%s.path' % moduleName.lower())
+    p = os.path.dirname(filePath)
+    if not sys.path.__contains__(p):
+      sys.path.insert(0,p)
+    fp = open(filePath, "r")
+    globals()[moduleName] = imp.load_module(
+        moduleName, fp, filePath, ('.py', 'r', imp.PY_SOURCE))
+    fp.close()
+
+    # rebuild the widget
+    # - find and hide the existing widget
+    # - create a new widget in the existing parent
+    parent = slicer.util.findChildren(name='%s Reload' % moduleName)[0].parent().parent()
+    for child in parent.children():
+      try:
+        child.hide()
+      except AttributeError:
+        pass
+    # Remove spacer items
+    item = parent.layout().itemAt(0)
+    while item:
+      parent.layout().removeItem(item)
+      item = parent.layout().itemAt(0)
+
+    # delete the old widget instance
+    if hasattr(globals()['slicer'].modules, widgetName):
+      getattr(globals()['slicer'].modules, widgetName).cleanup()
+
+    # create new widget inside existing parent
+    globals()[widgetName.lower()] = eval(
+        'globals()["%s"].%s(parent)' % (moduleName, widgetName))
+    globals()[widgetName.lower()].setup()
+    setattr(globals()['slicer'].modules, widgetName, globals()[widgetName.lower()])
 
   def onReloadAndTest(self,moduleName="CatheterMatchRegistrationTest"):
     try:
@@ -318,6 +423,7 @@ class CatheterMatchRegistrationTestLogic:
     """
     Run the actual algorithm
     """
+    import time
 
     self.delayDisplay('Running the aglorithm')
 
@@ -325,22 +431,34 @@ class CatheterMatchRegistrationTestLogic:
     needleDetectionCLI = slicer.modules.needledetection
 
     # Find needle for fixed volume
-    needleDetectionParameters["inputVolume"] = inputFixedVolume.GetID()
-    needleDetectionParameters["outputVolume"] = needleDetectionOutputFixedVolume.GetID()
-    needleDetectionParameters["needleTransform"] = needleDetectionOutputFixedTransform.GetID()
-    slicer.cli.run(needleDetectionCLI, None, needleDetectionParameters, wait_for_completion=True)
+    fixedNeedleDetectionParameters["inputVolume"] = inputFixedVolume.GetID()
+    fixedNeedleDetectionParameters["outputVolume"] = needleDetectionOutputFixedVolume.GetID()
+    fixedNeedleDetectionParameters["needleTransform"] = needleDetectionOutputFixedTransform.GetID()
+    timeStart = time.time()
+    slicer.cli.run(needleDetectionCLI, None, fixedNeedleDetectionParameters, wait_for_completion=True)
+    timeEnd = time.time()
+    timeFixedCatheterDetection = timeEnd - timeStart
 
     # Find needle for moving volume
-    needleDetectionParameters["inputVolume"] = inputMovingVolume.GetID()
-    needleDetectionParameters["outputVolume"] = needleDetectionOutputMovingVolume.GetID()
-    needleDetectionParameters["needleTransform"] = needleDetectionOutputMovingTransform.GetID()
-    slicer.cli.run(needleDetectionCLI, None, needleDetectionParameters, wait_for_completion=True)
+    movingNeedleDetectionParameters["inputVolume"] = inputMovingVolume.GetID()
+    movingNeedleDetectionParameters["outputVolume"] = needleDetectionOutputMovingVolume.GetID()
+    movingNeedleDetectionParameters["needleTransform"] = needleDetectionOutputMovingTransform.GetID()
+    timeStart = time.time()
+    slicer.cli.run(needleDetectionCLI, None, movingNeedleDetectionParameters, wait_for_completion=True)
+    timeEnd = time.time()
+    timeMovingCatheterDetection = timeEnd - timeStart
     
     # Generate cylinder mask for fixed volume
+    timeStart = time.time()
     self.GenerateCylinderLabelMap(needleDetectionOutputFixedTransform, inputFixedVolume, fixedProstateMask, cylinderRadius, cylinderLength, cylinderOffset, 4)
+    timeEnd = time.time()
+    timeFixedMask = timeEnd - timeStart
     
     # Generate cylinder mask for moving volume
+    timeStart = time.time()
     self.GenerateCylinderLabelMap(needleDetectionOutputMovingTransform, inputMovingVolume, movingProstateMask, cylinderRadius, cylinderLength, cylinderOffset, 4)
+    timeEnd = time.time()
+    timeMovingMask = timeEnd - timeStart
 
     # Replace label 255 by 1
 #    replaceLabel = EditorLib.ChangeLabelEffectOptions()
@@ -366,10 +484,17 @@ class CatheterMatchRegistrationTestLogic:
     catheterRegistrationParameters["FixedMaskImageFileName"] = fixedProstateMask.GetID()
     catheterRegistrationParameters["MovingMaskImageFileName"] = movingProstateMask.GetID()
     catheterRegistrationParameters["OutputTransform"] = outputTransform.GetID()
+
+    timeStart = time.time()
     slicer.cli.run(catheterRegistrationCLI, None, catheterRegistrationParameters, wait_for_completion=True)
+    timeEnd = time.time()
+    timeCathMatch = timeEnd - timeStart
 
     # Put the moving volume under registration transform
     inputMovingVolume.SetAndObserveTransformNodeID(outputTransform.GetID())
+
+    print ('==== CathMatch registration: Time ====')
+    print ('(FixedCatheterDetection, MovingCatheterDetection, FixedMask, MovingMask, CathMatch) = (%f, %f, %f, %f, %f)' % (timeFixedCatheterDetection, timeMovingCatheterDetection, timeFixedMask, timeMovingMask, timeCathMatch))
 
     return True
 
@@ -384,7 +509,7 @@ class CatheterMatchRegistrationTestLogic:
     cylinderSource.SetCenter(0.0, 0.0, 0.0)
     cylinderSource.SetRadius(radius)
     cylinderSource.SetHeight(length)
-    cylinderSource.SetResolution(30)
+    cylinderSource.SetResolution(240)
     cylinderSource.Update()
 
     # Move cylinder to needleTransform
